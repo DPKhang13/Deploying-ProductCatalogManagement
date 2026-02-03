@@ -15,14 +15,20 @@ const ProductList: React.FC<ProductListProps> = ({ categoryId }) => {
 
     useEffect(() => {
         setLoading(true);
+        console.log('ProductList - categoryId:', categoryId);
 
         const fetch = async () => {
             try {
-                const data = categoryId
+                console.log('Fetching products...');
+                const data = categoryId && categoryId !== 0
                     ? await getProductsByCategoryId(categoryId)
                     : await getProducts();
 
+                console.log('Products received:', data);
                 setProducts(data);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                setProducts([]);
             } finally {
                 setLoading(false);
             }

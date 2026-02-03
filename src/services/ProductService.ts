@@ -2,15 +2,9 @@ import type { Product } from "../types/Product";
 import type { ApiResponse } from "../types/ApiResponse";
 import axios from "../api/axios";
 
-// export const getProducts = async (): Promise<Product[]> => {
-//   const res = await axios.get<ApiResponse<Product[]>>("/api/products");
-//   return res.data.payload ?? [];
-// };
-
 export const getProducts = async (): Promise<Product[]> => {
-  const res = await fetch("http://localhost:8080/api/products");
-  const json = await res.json();
-  return json.payload; 
+  const res = await axios.get<ApiResponse<Product[]>>("/api/products");
+  return res.data.payload ?? [];
 };
 
 export const deleteProduct = async (productId: number): Promise<void> => {

@@ -1,5 +1,6 @@
-@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 
 @theme {
   --color-fpt-orange: #F37021;
@@ -83,7 +84,6 @@ html {
   background: #F37021;
 }
 
-@import "tailwindcss";
   /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;

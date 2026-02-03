@@ -6,7 +6,7 @@ import CategoryList from '../../components/adminPage/CategoryList';
 import ProductList from '../../components/adminPage/ProductList';
 
 const HomePage: React.FC = () => {
-    const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
+    const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(0);
 
     return (
         <div className="bg-fpt-gray min-h-screen">
