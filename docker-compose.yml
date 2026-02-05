@@ -28,7 +28,7 @@ services:
     container_name: fpt-ecommerce-app
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ProductCatalogManage
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=123456
       - JWT_SECRET=THIS_IS_A_VERY_LONG_SECRET_KEY_256_BITS_MINIMUM_LENGTH_FOR_DOCKER_DEV_1234567890
