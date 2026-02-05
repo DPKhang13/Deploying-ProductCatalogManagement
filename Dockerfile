@@ -28,8 +28,11 @@ COPY --from=build /app/dist /usr/share/nginx/html
 # Copy nginx configuration template
 COPY nginx.conf /etc/nginx/templates/default.conf.template
 
-# Railway provides PORT env variable, default to 80 for local
-ENV PORT=80
+# Set default PORT if not provided
+ENV PORT=8080
+
+# Expose port
+EXPOSE $PORT
 
 # Start nginx - envsubst will automatically process templates
 CMD ["nginx", "-g", "daemon off;"]
