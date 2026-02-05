@@ -20,5 +20,5 @@ COPY --from=build /app/target/*.jar app.jar
 # Expose port (Railway will assign dynamically)
 EXPOSE ${PORT:-8080}
 
-# Run the application with production profile
-ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "app.jar"]
+# Run the application - profile will be set via environment variable
+ENTRYPOINT ["java", "-jar", "app.jar"]
