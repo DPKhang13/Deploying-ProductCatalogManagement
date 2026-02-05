@@ -1,0 +1,13 @@
+*.md
+!RAILWAY_DEPLOYMENT.md
+.git
+.gitignore
+.idea
+.vscode
+*.iml
+target/
+node_modules/
+uploads/
+*.log
+docker-compose.yml
+check-status.ps1

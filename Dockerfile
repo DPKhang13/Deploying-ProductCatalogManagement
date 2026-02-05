@@ -17,8 +17,8 @@ WORKDIR /app
 # Copy jar from build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose port
-EXPOSE 8080
+# Expose port (Railway will assign dynamically)
+EXPOSE ${PORT:-8080}
 
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Run the application with production profile
+ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "app.jar"]
