@@ -33,3 +33,6 @@ EXPOSE 8080
 
 # Start nginx - envsubst will automatically process templates
 CMD ["nginx", "-g", "daemon off;"]
+
+# Start nginx - envsubst will automatically process templates
+CMD ["nginx", "-g", "daemon off;"]

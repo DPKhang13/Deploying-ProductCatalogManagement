@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - VITE_API_URL=${VITE_API_URL:-http://localhost:8080}
+        - VITE_API_URL=${VITE_API_URL:-https://back-end-production-4645.up.railway.app}
     container_name: ecommerce-frontend
     ports:
       - "3000:8080"
