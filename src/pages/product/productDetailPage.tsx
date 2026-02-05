@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import type { Product } from '../../types/Product';
 import { getProductById } from '../../services/ProductService';
-import './ProductDetailPage.css';
+import './productDetailPage.css';
 import { resolveImageUrl } from '../../utils/image';
 
 
@@ -10,17 +10,38 @@ const ProductDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (id) {
-      setLoading(true);
-      getProductById(Number(id))
-        .then(setProduct)
-        .catch(() => setError('Không thể tải sản phẩm'))
-        .finally(() => setLoading(false));
-    }
+    if (!id) return;
+
+    let isMounted = true;
+
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await getProductById(Number(id));
+        if (isMounted) {
+          setProduct(data);
+        }
+      } catch {
+        if (isMounted) {
+          setError('Không thể tải sản phẩm');
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchProduct();
+
+    return () => {
+      isMounted = false;
+    };
   }, [id]);
 
   if (loading) {
